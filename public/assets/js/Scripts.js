@@ -18,6 +18,7 @@ function currentDate() {
     setTimeout("currentDate()", 1000);
 }
 
+/*
 function check_fio_test() {
     var fio = document.test.inputFIO.value;
     let array = fio.split(" ");
@@ -216,4 +217,4 @@ function focusOnFIO(x) {
         element.innerHTML = "Формат ФИО не верный";
         return false;
     }
-}
+}*/

@@ -1,4 +1,4 @@
-const input = document.body.querySelector('.phonemask');
+const input = document.body.querySelector('.phone');
 
 input.addEventListener('keypress', (evt) => {
     if (evt.keyCode < 47 || evt.keyCode > 57) {
@@ -66,9 +66,9 @@ function checkFormContact(form) {
         document.getElementById("name").focus();
         return false;
     };
-    if (document.getElementById("mail").value == "") {
+    if (document.getElementById("email").value == "") {
         window.alert("Не введено поле E-mail");
-        document.getElementById("mail").focus();
+        document.getElementById("email").focus();
         return false;
     };
     if (document.getElementById("phone").value == "") {

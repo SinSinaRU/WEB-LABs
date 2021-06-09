@@ -6,6 +6,9 @@ use app\core\Controller;
 
 class My_interestsController extends Controller{
     public function indexAction(){
-        $this->view->render('Мои интересы');
+        $vars=[
+            'hrefs' => $this->model->getInterestsHref(),
+            'interests'=> $this->model->getInterestsText()];
+        $this->view->render('Мои интересы',$vars);
     }
 }

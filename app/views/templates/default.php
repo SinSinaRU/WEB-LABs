@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title> <?php echo $title; ?> </title>
-    <link rel="stylesheet" type="text/css" href="../../public/assets/css/main-styles.css"/>
-    <script src="../../public/assets/js/scripts.js"></script>
-    <script type="text/javascript" src="../../public/assets/js/cookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="public/assets/css/main-styles.css"/>
+    <script src="public/assets/js/scripts.js"></script>
+    <script type="text/javascript" src="public/assets/js/cookie.js"></script>
 </head>
 <body>
 <div>

@@ -1,6 +1,5 @@
 function showCalendar() {
-    document.getElementsByName('birth')[0].value = "";
-    var elems = document.getElementsByName('birth')[0];
+    var elems = document.getElementsByName('birthday')[0];
     elems.onfocus = function() {
         var cal = document.getElementsByClassName('calendar')[0];
         cal.style.visibility = "visible";
@@ -78,7 +77,7 @@ function showDays() {
     var calcDays = document.getElementsByClassName('num');
     for (var i = 0; i < calcDays.length; i++) {
         calcDays[i].onclick = function() {
-            var inputBirth = document.getElementsByName('birth')[0];
+            var inputBirth = document.getElementsByName('birthday')[0];
             var selectMonth = document.getElementsByName('month')[0].value;
             var selectYear = document.getElementsByName('year')[0].value;
             inputBirth.value = this.textContent + ' ' + getMonthNumForInput(selectMonth) + ' ' + selectYear;

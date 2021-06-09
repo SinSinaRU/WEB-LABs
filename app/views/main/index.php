@@ -1,6 +1,6 @@
 
 <div>
-    <img src="../../../public/assets/img/ME.jpg"  alt="Avatar" class="imageMe"></img>
+    <img src="public/assets/img/ME.jpg"  alt="Avatar" class="imageMe"></img>
 </div>
 <div>
     <p class="textMe">Данилов Даниил <br> Андреевич</p>
