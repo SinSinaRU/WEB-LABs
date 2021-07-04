@@ -8,6 +8,10 @@ class TestController extends Controller
 {
     public function indexAction()
     {
-        $this->view->render('Тест');
+        $vars = [];
+        if (!empty($_POST)) {
+            $vars["Errors"] = $this->model->Errors;
+        }
+        $this->view->render('Тест', $vars);
     }
 }

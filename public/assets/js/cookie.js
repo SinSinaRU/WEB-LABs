@@ -1,6 +1,6 @@
 const pages = {
-    'my-interests': 'Интересы',
     '': 'Главная',
+    'my-interests': 'Интересы',
     'about-me': 'Обо мне',
     'study-plan': 'Учеба',
     'photo-album': 'Фотоальбом',
@@ -22,7 +22,7 @@ function getCookieValue(name) {
     return findeCookie;
 }
 
-function getSavedVisitfInCookie(pathName) {
+function getSavedVisitInCookie(pathName) {
     const parseVal = parseInt(getCookieValue(pathName), 10);
     if (isNaN(parseVal)) {
         return 0;
@@ -32,7 +32,7 @@ function getSavedVisitfInCookie(pathName) {
 }
 
 function addVisitSavedInCookie(pathName) {
-    setCookie(pathName, getSavedVisitfInCookie(pathName) + 1, 1);
+    setCookie(pathName, getSavedVisitInCookie(pathName) + 1, 1);
 }
 
 function getSavedVisitInLocalStorage(pathName) {
@@ -69,7 +69,7 @@ function getPagesKeyCookies() {
     const prepData = [];
     const pagesKey = Object.keys(pages);
     for (let i = 0; i < pagesKey.length; i++) {
-        prepData.push([pagesKey[i], getSavedVisitfInCookie(pagesKey[i])]);
+        prepData.push([pagesKey[i], getSavedVisitInCookie(pagesKey[i])]);
     }
     return prepData;
 }
@@ -92,7 +92,7 @@ function renderTable(sourceData, header) {
 }
 
 function testSession() {
-    const isStarted = sessionStorage.getItem('sessionStartted');
+    const isStarted = sessionStorage.getItem('sessionStarted');
     if (!isStarted) {
 
         const pagesKey = Object.keys(pages);
@@ -100,18 +100,18 @@ function testSession() {
         pagesKey.forEach((item) => {
             localStorage.setItem(item, 0);
         });
-        sessionStorage.setItem('sessionStartted', true);
+        sessionStorage.setItem('sessionStarted', true);
     }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     testSession();
-    anhorAll = document.getElementById("history-all");
-    if (anhorAll) {
-        anhorAll.append(renderTable(getPagesKeyLocalStorage(), '«История текущего сеанса»'));
-    };
     anhorSession = document.getElementById("history-session");
     if (anhorSession) {
-        anhorSession.append(renderTable(getPagesKeyCookies(), '«История за все время»'));
+        anhorSession.append(renderTable(getPagesKeyLocalStorage(), '«История текущего сеанса»'));
+    };
+    anhorAll = document.getElementById("history-all");
+    if (anhorAll) {
+        anhorAll.append(renderTable(getPagesKeyCookies(), '«История за все время»'));
     };
 })

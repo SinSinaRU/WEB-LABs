@@ -3,12 +3,11 @@
 namespace app\models\validators;
 
 
-use DOMDocument;
 
 class FormValidation
 {
-    private $Rules = [];
-    private $Errors = [];
+    protected $Rules = [];
+    public $Errors = [];
 
     public function isNotEmpty($data)
     {
@@ -22,7 +21,7 @@ class FormValidation
     {
         $fioArr = explode(" ", trim($fio));
 
-        return count($fioArr) < 3 ? false : true;
+            return count($fioArr) < 3 ? false : true;
     }
 
     public function isInteger($data)
@@ -69,6 +68,7 @@ class FormValidation
         $this->Rules[$field_name] = [$validator_name];
     }
 
+
     public function Validate($post_array)
     {
         if (!empty($post_array)) {
@@ -86,6 +86,18 @@ class FormValidation
                         break;
                     case "isPhone":
                         if (!$this->isPhone($post_array[$name])) $this->Errors[] = "Неверно введён номер телефона!";
+                        break;
+                    case "check_q_1":
+                        if (!CustomFormValidation::check_q_1($post_array[$name])) $this->Errors[] = "Заполните поле для ответа на 1 вопрос";
+                        else if(CustomFormValidation::check_q_1($post_array[$name])!==true) $this->Errors[]=CustomFormValidation::check_q_1($post_array[$name]);
+                        break;
+                    case "check_q_2":
+                        if (!CustomFormValidation::check_q_2($post_array[$name])) $this->Errors[] = "Заполните поле для ответа на 2 вопрос";
+                        else if(CustomFormValidation::check_q_2($post_array[$name])!==true) $this->Errors[]=CustomFormValidation::check_q_2($post_array[$name]);
+                        break;
+                    case "check_q_3":
+                        if (!CustomFormValidation::check_q_3($post_array[$name])) $this->Errors[] = "Заполните  поле для ответа на 3 вопрос";
+                        else if(CustomFormValidation::check_q_3($post_array[$name])!==true) $this->Errors[]=CustomFormValidation::check_q_3($post_array[$name]);
                         break;
                 }
             }

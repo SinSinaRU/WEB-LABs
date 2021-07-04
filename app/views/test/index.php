@@ -1,19 +1,19 @@
 <div id="rectangle2"></div>
 <div class="text-test">
     <div class="Contact">
-        <form name="test" onsubmit="return check_submit()" method="post">
+        <form name="test" action="/test" method="post">
             <p>
                 <b>Ваше ФИО:</b>
                 <br>
                 <label>
-                    <input name ="inputFIO" type="text" size="40" value=""  required>
+                    <input name ="inputFIO" type="text" size="40" value=""  >
                 </label>
             </p>
             <p>
                 <b>Ваша группа:</b>
                 <br>
                 <label>
-                    <select name="group" required style="width: 317px;">
+                    <select name="group"  style="width: 317px;">
                         <option value=""></option>
                         <optgroup label="1 Курс">
                             <option value="1">ПИ/б-20-1</option>
@@ -44,40 +44,50 @@
             </p>
             <br>
             <p>
-                <b>1.Что такое дисперсия света?</b>
+                <b>1.Что такое дисперсия света? (правильный ответ: ответ)</b>
                 <br>
-                <input type="textarea" name="quest1"  value="" required>
+                <input type="textarea" name="quest1"  value="" >
             </p>
             <p>
                 <b>2. Какой-то вопрос</b>
                 <br>
             </p>
             <p>
-                <input type="checkbox" name="quest2.1"> Что-то
-                <input type="checkbox" name="quest2.2"> Что-то
-                <input type="checkbox" name="quest2.3"> Что-то
+                <input type="hidden" name="quest2" value="0">
+                <input type="checkbox" name="quest2[]" value="false"> Что-то
+                <input type="checkbox" name="quest2[]" value="true1"> Правильный ответ
+                <input type="checkbox" name="quest2[]" value="true2"> Правильный ответ
 
             </p>
             <p>
                 <b>3. Какой-то вопрос</b>
                 <br>
-                <select name="quest3" required style="width: 317px;">
+                <select name="quest3"  style="width: 317px;">
                     <option value=""></option>
                     <optgroup label="Что-то">
                         <option value="1">что-то</option>
                         <option value="2">что-то</option>
-                    </optgroup>
-                    <optgroup label="Что-то">
-                        <option value="3">что-то</option>
+                        <option value="true">Правильный ответ</option>
                         <option value="4">что-то</option>
                     </optgroup>
                 </select>
             </p>
             <p>
-                <input type="submit" value="Отправить">
+                <input type="submit" id="sumbit" value="Отправить">
                 <input type="reset" value="Очистить">
             </p>
 
         </form>
+        <div class="notification" id="notification">
+            <?php
+            if (isset($Errors)) {
+                if (count($Errors) === 0) {
+                    echo '<a class="notification__item notification__item_green">Данные успешно отправлены</a>';
+                } else foreach ($Errors as $error) {
+                    echo $error;
+                }
+            }
+            ?>
+        </div>
     </div>
 </div>

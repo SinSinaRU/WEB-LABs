@@ -11,7 +11,7 @@
         <?php foreach ($interests as $anchor => $interest):?>
            <p id="<?php echo $anchor?>">
                <?php echo $interest?>
-               </a>
+               </p>
         <?php endforeach;?>
     </div>
 </div>
