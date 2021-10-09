@@ -2,21 +2,24 @@
 
 namespace app\models;
 
-use app\core\Model;
+use app\core\BaseActiveRecord;
 
-class Test extends Model
+class Test extends BaseActiveRecord
 {
-
+    protected static $tablename = "test";
     public $Errors = [];
-
+    public $id;
+    public $group;
+    public $created_at;
+    public $fio;
+    public $q_1;
+    public $q_2;
+    public $q_3;
     public function __construct()
     {
         parent::__construct();
         $this->validator->SetRule("inputFIO", "checkFio");
         $this->validator->SetRule("group", "isNotEmpty");
-        $this->validator->SetRule("quest1", "check_q_1");
-        $this->validator->SetRule("quest2", "check_q_2");
-        $this->validator->SetRule("quest3", "check_q_3");
         $this->validator->Validate($_POST);
         $this->Errors = $this->validator->ShowErrors();
     }

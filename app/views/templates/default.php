@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title> <?php echo $title; ?> </title>
-    <link rel="stylesheet" type="text/css" href="public/assets/css/main-styles.css"/>
+    <link rel="stylesheet" type="text/css" href="/public/assets/css/main-styles.css"/>
     <script src="public/assets/js/scripts.js"></script>
     <script type="text/javascript" src="public/assets/js/cookie.js"></script>
 </head>
@@ -23,43 +23,63 @@
             </li>
             <br>
             <li>
-                <a class="menuText" href="about-me" onclick>Обо мне</a>
+                <a class="menuText" href="/about-me" onclick>Обо мне</a>
             </li>
             <br>
             <li>
-                <a class="menuText" href="#" onclick="showTab()">Мои интересы</a>
+                <a class="menuText" href="/#" onclick="showTab()">Мои интересы</a>
                 <ul class="dropdown-content" id="mydropdown">
                     <li>
-                        <a class="menuText" href="my-interests#aboutRyanGosling" onclick>О Райане Гослинге</a>
+                        <a class="menuText" href="/my-interests#aboutRyanGosling" onclick>О Райане Гослинге</a>
                     </li>
                     <li>
-                        <a class="menuText" href="my-interests#aboutMusic" onclick>О музыке</a>
+                        <a class="menuText" href="/my-interests#aboutMusic" onclick>О музыке</a>
                     </li>
                     <li>
-                        <a class="menuText" href="my-interests#aboutCompGames" onclick>О компьютерных играх</a>
+                        <a class="menuText" href="/my-interests#aboutCompGames" onclick>О компьютерных играх</a>
                     </li>
                 </ul>
             </li>
             <br>
             <li>
-                <a class="menuText" href="study-plan" onclick>Учёба</a>
+                <a class="menuText" href="/study-plan" onclick>Учёба</a>
             </li>
             <br>
             <li>
-                <a class="menuText" href="photo-album" onclick>Фотоальбом</a>
+                <a class="menuText" href="/photo-album" onclick>Фотоальбом</a>
             </li>
             <br>
             <li>
-                <a class="menuText" href="feedback" onclick>Контакт</a>
+                <a class="menuText" href="/feedback" onclick>Контакт</a>
             </li>
             <br>
             <li>
-                <a class="menuText" href="test" onclick>Тест по дисциплине</a>
+                <a class="menuText" href="/test" onclick>Тест по дисциплине</a>
             </li>
             <br>
             <br>
             <li>
-                <a class="menuText" href="cookie-history" onclick>История</a>
+                <a class="menuText" href="/cookie-history" onclick>История</a>
+            </li>
+            <br>
+            <li>
+                <a class="menuText" href="/guest-book" onclick>Книга посетителей</a>
+            </li>
+            <br>
+            <li>
+                <a class="menuText" href="/guest-book/load" onclick>Загрузка книги посетителей</a>
+            </li>
+            <br>
+            <li>
+                <a class="menuText" href="/blog/edit" onclick>Редактор блога</a>
+            </li>
+            <br>
+            <li>
+                <a class="menuText" href="/blog" onclick>Мой блог</a>
+            </li>
+            <br>
+            <li>
+                <a class="menuText" href="/blog/load" onclick>Загрузка данных блога</a>
             </li>
         </ul>
     </nav>

@@ -57,7 +57,7 @@
             <p id="comment"></p>
             </p>
             <p>
-                <input type="submit" id="sumbit" value="Отправить">
+                <input type="submit" id="submit" value="Отправить">
                 <input type="reset" value="Очистить">
             </p>
         </form>

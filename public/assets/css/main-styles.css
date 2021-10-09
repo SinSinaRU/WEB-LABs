@@ -88,7 +88,7 @@ body{
     background-image:
     url(../img/background.jpg);
     background-repeat:no-repeat;
-    background-size:auto;
+    background-size:100%;
     background-attachment: fixed;
     background-position-y: 10%;
 }
@@ -246,26 +246,18 @@ th, td {border: 2px solid aqua;}
 .notification .notification__item{
     margin-top: 10px;
     padding: 10px 20px;
-    background-color: #2b2b2b;
+    background-color: fuchsia;
     color: #fff;
     border-radius: 10px;
     font-size: 16px;
-    animation-name: errorOpacity;
-    animation-duration: .5s;
-    animation-delay: 7s;
-    animation-fill-mode: forwards;
 }
 
 .notification .notification__item span{
     font-weight: bold;
 }
 
-.notification .notification__item_red{
-    background-color: #d32f2f;
-    color: #fff;
-}
 
-.notification .notification__item_green{
-    background-color: #18C35C;
+.notification .notification__item_good{
+    background-color: cyan;
     color: #fff;
 }

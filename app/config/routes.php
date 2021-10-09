@@ -33,4 +33,24 @@ return [
         'controller' => 'test',
         'action' => 'index',
     ],
+    'guest-book' => [
+        'controller'=>'guest_book',
+        'action'=>'index',
+    ],
+    'guest-book/load' => [
+        'controller'=>'guest_book',
+        'action'=>'load',
+    ],
+    'blog/edit'=>[
+        'controller' =>'blog',
+        'action'=>'edit',
+    ],
+    'blog'=>[
+        'controller' =>'blog',
+        'action'=>'index',
+    ],
+    'blog/load'=>[
+        'controller' =>'blog',
+        'action'=>'load',
+    ],
 ];

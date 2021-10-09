@@ -111,7 +111,7 @@ class FormValidation
     {
         $ErrorsData = [];
         foreach ($this->Errors as $Error) {
-            $ErrorsData[] = '<div class="notification__item notification__item_red">' . $Error . '</div>';
+            $ErrorsData[] = '<div class="notification__item">' . $Error . '</div>';
         }
         return $ErrorsData;
     }
