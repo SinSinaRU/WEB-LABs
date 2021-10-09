@@ -16,28 +16,28 @@
                     <select name="group"  style="width: 317px;">
                         <option value=""></option>
                         <optgroup label="1 Курс">
-                            <option value="1">ПИ/б-20-1</option>
-                            <option value="2">ИС/б-20-1</option>
-                            <option value="3">ИС/б-20-2</option>
-                            <option value="4">ИС/б-20-3</option>
+                            <option value="ПИ/б-20-1">ПИ/б-20-1</option>
+                            <option value="ИС/б-20-1">ИС/б-20-1</option>
+                            <option value="ИС/б-20-2">ИС/б-20-2</option>
+                            <option value="ИС/б-20-3">ИС/б-20-3</option>
                         </optgroup>
                         <optgroup label="2 Курс">
-                            <option value="5">ПИ/б-19-1</option>
-                            <option value="6">ИС/б-19-1</option>
-                            <option value="7">ИС/б-19-2</option>
-                            <option value="8">ИС/б-19-3</option>
+                            <option value="ПИ/б-19-1">ПИ/б-19-1</option>
+                            <option value="ИС/б-19-1">ИС/б-19-1</option>
+                            <option value="ИС/б-19-2">ИС/б-19-2</option>
+                            <option value="ИС/б-19-3">ИС/б-19-3</option>
                         </optgroup>
                         <optgroup label="3 Курс">
-                            <option value="9">ПИ/б-18-1</option>
-                            <option value="10">ИС/б-18-1</option>
-                            <option value="11">ИС/б-18-2</option>
-                            <option value="12">ИС/б-18-3</option>
+                            <option value="ПИ/б-18-1">ПИ/б-18-1</option>
+                            <option value="ИС/б-18-1">ИС/б-18-1</option>
+                            <option value="ИС/б-18-2">ИС/б-18-2</option>
+                            <option value="ИС/б-18-3">ИС/б-18-3</option>
                         </optgroup>
                         <optgroup label="4 Курс">
-                            <option value="13">ПИ/б-17-1</option>
-                            <option value="14">ИС/б-17-1</option>
-                            <option value="15">ИС/б-17-2</option>
-                            <option value="16">ИС/б-17-3</option>
+                            <option value="ПИ/б-17-1">ПИ/б-17-1</option>
+                            <option value="ИС/б-17-1">ИС/б-17-1</option>
+                            <option value="ИС/б-17-2">ИС/б-17-2</option>
+                            <option value="ИС/б-17-3">ИС/б-17-3</option>
                         </optgroup>
                     </select>
                 </label>
@@ -73,7 +73,7 @@
                 </select>
             </p>
             <p>
-                <input type="submit" id="sumbit" value="Отправить">
+                <input type="submit" id="submit" value="Отправить">
                 <input type="reset" value="Очистить">
             </p>
 
@@ -82,7 +82,7 @@
             <?php
             if (isset($Errors)) {
                 if (count($Errors) === 0) {
-                    echo '<a class="notification__item notification__item_green">Данные успешно отправлены</a>';
+                    echo '<a class="notification__item notification__item_good">Данные успешно отправлены</a>';
                 } else foreach ($Errors as $error) {
                     echo $error;
                 }
