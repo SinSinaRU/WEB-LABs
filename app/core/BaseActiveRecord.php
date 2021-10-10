@@ -49,12 +49,11 @@ class BaseActiveRecord extends Model
         }
     }
 
-    public static function find($id)
+    public static function find($id, $column = "id")
     {
-        $sql = "SELECT * FROM " . static::$tablename . " WHERE id=$id";
+        $sql = "SELECT * FROM " . static::$tablename . " WHERE " . $column . " =$id";
         $stmt = static::$pdo->query($sql);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
         if (!$row) return null;
 
         $ar_obj = new static();
@@ -62,7 +61,6 @@ class BaseActiveRecord extends Model
         foreach ($row as $key => $value) {
             $ar_obj->$key = $value;
         }
-
         return $ar_obj;
     }
 
@@ -118,6 +116,7 @@ class BaseActiveRecord extends Model
 
         $sql = "INSERT INTO " . static::$tablename . " ($dbfields) VALUES ($prepareStr)";
         static::$pdo->prepare($sql)->execute(static::$dbfields);
+        static::$dbfields=[];
 
     }
 }

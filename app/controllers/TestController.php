@@ -16,6 +16,15 @@ class TestController extends Controller
                 $this->save();
             }
         }
+        if ($_SESSION['user'] != "") {
+            $all_data=Test::all('fio');
+            $test_data=[];
+            foreach ($all_data as $data){
+                if($data->fio==$_SESSION['user-fio'])
+                    $test_data[]=$data;
+            }
+            $vars['data']=$test_data;
+        }
         $this->view->render('Тест', $vars);
     }
 
@@ -26,7 +35,7 @@ class TestController extends Controller
         $test->created_at = date('y-m-d');
         $test->group = $_POST["group"];
         $test->q_1 = $_POST["quest1"] == "ответ";
-        $test->q_2 = $_POST["quest2"][0] == "true1"&& $_POST["quest2"][1]="true2";
+        $test->q_2 = $_POST["quest2"][0] == "true1" && $_POST["quest2"][1] == "true2";
         $test->q_3 = $_POST["quest3"] == "true";
         $test->save();
     }

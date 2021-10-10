@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\models\Blog;
-use app\models\BlogModel;
 
 class BlogController extends Controller
 {
@@ -39,8 +38,7 @@ class BlogController extends Controller
         $this->view->render('Загрузка данных блога:', $vars);
     }
 
-    public
-    function editAction()
+    public function editAction()
     {
         $uploaddir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/img/";
         $blogRecords = Blog::all("created_at", "DESC");

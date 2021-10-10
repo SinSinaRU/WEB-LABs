@@ -53,4 +53,40 @@ return [
         'controller' =>'blog',
         'action'=>'load',
     ],
+    'admin'=>[
+        'controller' =>'main',
+        'action'=>'index',
+    ],
+    'admin/guest-book/load' => [
+        'controller'=>'guest_book',
+        'action'=>'load',
+    ],
+    'admin/blog/edit'=>[
+        'controller' =>'blog',
+        'action'=>'edit',
+    ],
+    'admin/statistic'=>[
+        'controller' =>'statistic',
+        'action'=>'index',
+    ],
+    'admin/login'=>[
+        'controller' =>'main',
+        'action'=>'login',
+    ],
+    'admin/logout'=>[
+        'controller' =>'main',
+        'action'=>'logout',
+    ],
+    'users'=>[
+        'controller' =>'users',
+        'action'=>'login',
+    ],
+    'users/register'=>[
+        'controller' =>'users',
+        'action'=>'register',
+    ],
+    'users/logout'=>[
+        'controller' =>'users',
+        'action'=>'logout',
+    ],
 ];

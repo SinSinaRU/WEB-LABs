@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+use app\models\Statistic;
+
 class Router
 {
     protected $routes = [];
@@ -36,10 +38,20 @@ class Router
 
     public function run()
     {
+        if ($_REQUEST['admin_area']) {
+            $admin_path = '\admin';
+            $admin_class_prefix = 'Admin';
+        } else {
+            $admin_path = '';
+            $admin_class_prefix = '';
+            Statistic::save_statistic();
+        }
         if ($this->match()) {
-            $path = 'app\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
+            $_REQUEST['action'] = $this->params['action'];
+            $path = 'app' . $admin_path . '\controllers\\' . $admin_class_prefix . ucfirst($this->params['controller']) . 'Controller';
             if (class_exists($path)) {
-                $action = $this->params['action'] . 'Action';
+                $action = $_REQUEST['action'] . 'Action';
+
                 if (method_exists($path, $action)) {
                     $controller = new $path($this->params);
                     $controller->$action();
@@ -50,7 +62,7 @@ class Router
                 View::errorCode(404);
             }
         } else {
-           View::errorCode(404);
+            View::errorCode(404);
         }
     }
 

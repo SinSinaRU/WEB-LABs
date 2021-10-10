@@ -6,14 +6,15 @@
                 <b>Ваше ФИО:</b>
                 <br>
                 <label>
-                    <input name ="inputFIO" type="text" size="40" value=""  >
+                    <input name="inputFIO" type="text" size="40"
+                           value="<?php if ($_SESSION['user'] != "") echo $_SESSION['user-fio']; ?>">
                 </label>
             </p>
             <p>
                 <b>Ваша группа:</b>
                 <br>
                 <label>
-                    <select name="group"  style="width: 317px;">
+                    <select name="group" style="width: 317px;">
                         <option value=""></option>
                         <optgroup label="1 Курс">
                             <option value="ПИ/б-20-1">ПИ/б-20-1</option>
@@ -46,7 +47,7 @@
             <p>
                 <b>1.Что такое дисперсия света? (правильный ответ: ответ)</b>
                 <br>
-                <input type="textarea" name="quest1"  value="" >
+                <input type="textarea" name="quest1" value="">
             </p>
             <p>
                 <b>2. Какой-то вопрос</b>
@@ -62,7 +63,7 @@
             <p>
                 <b>3. Какой-то вопрос</b>
                 <br>
-                <select name="quest3"  style="width: 317px;">
+                <select name="quest3" style="width: 317px;">
                     <option value=""></option>
                     <optgroup label="Что-то">
                         <option value="1">что-то</option>
@@ -76,8 +77,43 @@
                 <input type="submit" id="submit" value="Отправить">
                 <input type="reset" value="Очистить">
             </p>
-
         </form>
+        <?php if ($_SESSION['user'] != ""): ?>
+        <table id="table-blog" align="center">
+            <tr id="table-header">
+                <th>ФИО</th>
+                <th>Группа</th>
+                <th>Первый вопрос</th>
+                <th>Второй вопрос</th>
+                <th>Третий вопрос</th>
+                <th>Время написания теста</th>
+            </tr>
+            <?php
+            foreach ($data as $key => $value):?>
+                <tr>
+                    <td>
+
+                        <?= $value->fio?>
+                    </td>
+                    <td>
+                        <?= $value->group?>
+                    </td>
+                    <td>
+                        <?php if ($value->q_1==1) echo "+"; else echo "-"; ?>
+                    </td>
+                    <td>
+                        <?php if ($value->q_2==1) echo "+"; else echo "-"; ?>
+                    </td>
+                    <td>
+                        <?php if ($value->q_3==1) echo "+"; else echo "-"; ?>
+                    </td>
+                    <td>
+                        <?= $value->created_at ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+        <?php endif;?>
         <div class="notification" id="notification">
             <?php
             if (isset($Errors)) {

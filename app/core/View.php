@@ -2,6 +2,8 @@
 
 namespace app\core;
 
+
+
 class View
 {
     public $path;
@@ -16,12 +18,18 @@ class View
 
     public function render($title, $vars = [])
     {
+        if ($_REQUEST['admin_area']) {
+            $admin_path = '/admin';
+        } else {
+            $admin_path = '';
+        }
+
         extract($vars);
-        if (file_exists('app/views/' . $this->path . '.php')) {
+        if (file_exists('app'.$admin_path.'/views/' . $this->path . '.php')) {
             ob_start();
-            require 'app/views/' . $this->path . '.php';
+            require 'app'.$admin_path.'/views/' . $this->path . '.php';
             $content = ob_get_clean();
-            require 'app/views/templates/' . $this->template . '.php';
+            require 'app'.$admin_path.'/views/templates/' . $this->template . '.php';
         } else {
             echo 'view not found: ' . $this->path;
         }

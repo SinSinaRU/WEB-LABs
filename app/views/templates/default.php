@@ -11,15 +11,15 @@
 <body>
 <div>
     <header id="rectangle">
-        <h class="headText">Лабораторная работа №8 «Исследование архитектуры MVC приложения и возможностей
-            обработки данных HTML-форм на стороне сервера с использованием языка PHP»</h>
+        <h class="headText">Лабораторная работа №10 «Исследование механизма сессий в
+            PHP».<?php if ($_SESSION['user-fio'] != ''):?> Пользователь:<?=$_SESSION['user-fio']?> <?php endif;?></h>
     </header>
 
     <nav class="menu">
         <ul>
             <br>
             <li>
-                <a class="menuText" href='/' >Главная</a>
+                <a class="menuText" href='/'>Главная</a>
             </li>
             <br>
             <li>
@@ -80,6 +80,19 @@
             <br>
             <li>
                 <a class="menuText" href="/blog/load" onclick>Загрузка данных блога</a>
+            </li>
+            <br>
+
+            <li>
+                <?php if ($_SESSION['user'] == ''): ?>
+                    <a class="menuText" href="/users" onclick>Вход</a>
+                <?php else: ?>
+                    <a class="menuText" href="/users/logout" onclick>Выход</a>
+                <?php endif; ?>
+            </li>
+            <br>
+            <li>
+                <a class="menuText" href="/users/register" onclick>Регистрация</a>
             </li>
         </ul>
     </nav>
