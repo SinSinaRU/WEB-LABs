@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\models\Blog;
+use app\models\Comments;
 
 class BlogController extends Controller
 {
@@ -24,10 +25,10 @@ class BlogController extends Controller
 
     public function loadAction()
     {
-        $Errors=[];
+        $Errors = [];
         if (!empty($_FILES)) {
 
-            $file =  $_SERVER['DOCUMENT_ROOT'] . "/public/" . $_FILES["csv-file"]["name"];
+            $file = $_SERVER['DOCUMENT_ROOT'] . "/public/" . $_FILES["csv-file"]["name"];
 
             if (file_exists($file)) {
                 $msgs = Blog::getCSVData($file);
@@ -36,6 +37,41 @@ class BlogController extends Controller
         }
         $vars = [];
         $this->view->render('Загрузка данных блога:', $vars);
+    }
+
+    public function addCommentAction()
+    {
+        header('Content-Type: text/xml');
+
+        $post = file_get_contents('php://input');
+
+        $postData = simplexml_load_string($post);
+        foreach ((array)$postData as $index => $node)
+            $_POST[$index] = $node;
+
+        if (!empty($_POST["comment"])) {
+            $comments = new Comments();
+            $comments->id_blog = (int)$_SESSION["blog-page"];
+            $comments->created_at = date('y-m-d H:i:s');
+            $comments->text = $_POST["comment"];
+            $comments->user_fio = $_SESSION["user-fio"];
+            $comments->save();
+        }
+        $all_comments = Comments::findAll((int)$_SESSION["blog-page"], "id_blog");
+        $xmlstr = '<note></note>';
+        $xmlData = new \ SimpleXMLElement($xmlstr);
+        $i = 0;
+
+        foreach ($all_comments as $value) {
+            $i++;
+            $data_comment = $xmlData->addChild('comment');
+            $data_comment->addChild('user_fio', $value->user_fio);
+            $data_comment->addChild('text', $value->text);
+            $data_comment->addChild('created_at', $value->created_at);
+        }
+        $_REQUEST["xml"]=$xmlData->asXML();
+        echo $_REQUEST["xml"];
+
     }
 
     public function editAction()
@@ -55,8 +91,10 @@ class BlogController extends Controller
         $vars["blogRecords"] = $blogRecords;
         $this->view->render('Редактирование блога:', $vars);
     }
-    function saveCSV($msgs){
-        foreach ($msgs as $msg){
+
+    function saveCSV($msgs)
+    {
+        foreach ($msgs as $msg) {
             $blog = new Blog();
 
             $blog->msg_theme = $msg[0];
@@ -67,6 +105,7 @@ class BlogController extends Controller
             $blog->save();
         }
     }
+
     function save()
     {
         $test = new Blog();

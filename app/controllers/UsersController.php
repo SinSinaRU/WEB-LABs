@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Controller;
+use app\core\Router;
 use app\core\View;
 use app\models\Users;
 
@@ -28,16 +29,26 @@ class UsersController extends Controller
     public function registerAction()
     {
         $vars = [];
-
         if (!empty($_POST)) {
-            if (Users::find("'" . $_POST["login"] . "'", "login") != null)
-                $this->model->Errors[] = "Пользователь с таким логином сущевстует";
             $vars["Errors"] = $this->model->Errors;
             if (count($vars["Errors"]) == 0) {
                 $this->save();
             }
         }
         $this->view->render('Регистрация пользователя', $vars);
+    }
+
+    public function loginCheckAction()
+    {
+        if (isset($_GET["login"])) {
+            header('Content-Type: application/json');
+            $loginBusy = Users::find('"' . $_GET["login"] . '"', "login");
+            if ($loginBusy == null) {
+                $_GET["login_used"] = 0;
+            } else $_GET["login_used"] = 1;
+            echo json_encode($_GET);
+            die();
+        }
     }
 
     public function logoutAction()

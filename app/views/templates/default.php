@@ -4,15 +4,16 @@
 <head>
     <meta charset="utf-8">
     <title> <?php echo $title; ?> </title>
+    <script type="text/javascript" src="/public/assets/js/jquery-3.4.1.js"></script>
     <link rel="stylesheet" type="text/css" href="/public/assets/css/main-styles.css"/>
-    <script src="public/assets/js/scripts.js"></script>
-    <script type="text/javascript" src="public/assets/js/cookie.js"></script>
+    <script src="/public/assets/js/scripts.js"></script>
+    <script type="text/javascript" src="/public/assets/js/cookie.js"></script>
 </head>
 <body>
 <div>
     <header id="rectangle">
         <h class="headText">Лабораторная работа №10 «Исследование механизма сессий в
-            PHP».<?php if ($_SESSION['user-fio'] != ''):?> Пользователь:<?=$_SESSION['user-fio']?> <?php endif;?></h>
+            PHP».<?php if(!empty($_SESSION['user'])) if ($_SESSION['user-fio'] != ''): ?> Пользователь:<?= $_SESSION['user-fio'] ?><?php endif; ?></h>
     </header>
 
     <nav class="menu">
@@ -84,16 +85,19 @@
             <br>
 
             <li>
-                <?php if ($_SESSION['user'] == ''): ?>
-                    <a class="menuText" href="/users" onclick>Вход</a>
-                <?php else: ?>
+                <?php if(!empty($_SESSION['user']) and $_SESSION['user'] != ''): ?>
                     <a class="menuText" href="/users/logout" onclick>Выход</a>
-                <?php endif; ?>
             </li>
-            <br>
+                <?php else: ?>
+                    <a class="menuText" href="/users" onclick>Вход</a>
+            </li>
+                <br>
             <li>
                 <a class="menuText" href="/users/register" onclick>Регистрация</a>
             </li>
+                <?php endif; ?>
+
+
         </ul>
     </nav>
 </div>

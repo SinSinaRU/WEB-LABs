@@ -1,36 +1,39 @@
-.menuText{
-    color:burlywood;
+.menuText {
+    color: burlywood;
     font-family: 'MistralBold';
     font-size: 135%;
 }
 
-.menu{
+.menu {
     position: fixed;
-    top:8%;
+    top: 8%;
     color: fuchsia;
-    background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(../img/Background_Menu.jpg);
-    background-size:111%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../img/Background_Menu.jpg);
+    background-size: 111%;
     background-repeat: no-repeat;
-    padding-right:60px;
+    padding-right: 60px;
     border-radius: 7%;
 }
-.menuText:hover{
+
+.menuText:hover {
     color: cyan;
-    background-color:rgba(255,0, 255, 0.5);
-}
-.dropdown-content{
-    display:none;
-    color:burlywood;
-    font-family: 'MistralBold';
-    
-}
-.show{
-    display:block;
+    background-color: rgba(255, 0, 255, 0.5);
 }
 
-.textMe{
+.dropdown-content {
+    display: none;
+    color: burlywood;
+    font-family: 'MistralBold';
+
+}
+
+.show {
+    display: block;
+}
+
+.textMe {
     position: fixed;
-    float:right;
+    float: right;
     right: 25px;
     top: 42%;
     color: cyan;
@@ -41,80 +44,90 @@
 .headText {
     margin-left: 7.5%;
     position: fixed;
-    top:0px;
+    top: 0px;
     font-size: 140%;
     color: fuchsia;
     text-shadow: black 2px 1px 0;
 }
+
 .footText {
     margin-left: 35%;
     position: fixed;
 
-    bottom:0px;
+    bottom: 0px;
     font-size: 180%;
     color: burlywood;
     text-shadow: black 2px 1px 0;
 }
-.footTextRight{
+
+.footTextRight {
     position: fixed;
-    bottom:0px;
+    bottom: 0px;
     right: 0;
     font-size: 180%;
     color: burlywood;
     text-shadow: black 2px 1px 0;
 }
+
 .textGroup {
     font-size: 200%;
     color: violet;
     font-family: "Mistral";
     position: fixed;
-    float:right;
+    float: right;
     right: 30px;
     top: 49%;
 }
 
 .imageMe {
-    position: fixed; 
-    top: 7%;  
-    right: 10px; 
-    float: right; 
+    position: fixed;
+    top: 7%;
+    right: 10px;
+    float: right;
     border-radius: 28% 28% 0% 0%;
     max-width: 210px;
     height: auto;
-    color:burlywood;
+    color: burlywood;
 }
 
-body{
-    background-image:
-    url(../img/background.jpg);
-    background-repeat:no-repeat;
-    background-size:100%;
+body {
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
     background-attachment: fixed;
     background-position-y: 10%;
 }
-    
+
 #rectangle {
     position: fixed;
-    left:0px;
-    top:0px;
+    left: 0px;
+    top: 0px;
     width: 100%;
     height: 40px;
     background: burlywood;
     z-index: 5;
 }
+
 #rectangle4 {
     position: fixed;
-    left:0px;
-    bottom:0px;
+    left: 0px;
+    bottom: 0px;
     width: 100%;
     height: 40px;
     background: rgb(184, 48, 184);
     z-index: 5;
 }
+
+.add_comments {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+}
+
 #rectangle2 {
     position: fixed;
-    margin-left:13.5%;
-    top:40px;
+    margin-left: 13.5%;
+    top: 40px;
     width: 74%;
     height: 90.8%;
     background: burlywood;
@@ -122,110 +135,162 @@ body{
     border: 3px solid violet;
     z-index: 0;
 }
-.text{
+
+#login_used {
+    display: none;
+}
+
+.text {
     position: absolute;
-    margin-left:14%;
-    margin-right:14%;
+    margin-left: 14%;
+    margin-right: 14%;
     margin-bottom: 4%;
     margin-top: 50px;
-    color:cyan;
+    color: cyan;
     font-family: 'MistralBold';
     font-size: 160%;
     z-index: 1;
     text-shadow: black 4px 2px 2px;
 }
-.image{
+
+.image {
     transition: 0.2s;
     width: 9vw;
     height: 16vh;
     padding: 5px;
     border-radius: 10%;
     object-fit: cover;
-    color:burlywood;
+    color: burlywood;
 }
-.text-study{
+
+.text-study {
     position: absolute;
-    margin-left:14%;
-    margin-right:14%;
+    margin-left: 14%;
+    margin-right: 14%;
     margin-bottom: 4%;
     margin-top: 50px;
     text-align: center;
-    color:cyan;
+    color: cyan;
     font-family: 'MistralBold';
     font-size: 180%;
     z-index: 1;
     text-shadow: black 4px 2px 2px;
 }
+
 #rectangle3 {
     position: fixed;
-    margin-left:33vw;
-    margin-right:33vw;
-    top:40px;
+    margin-left: 33vw;
+    margin-right: 33vw;
+    top: 40px;
     width: 37.9vw;
 
 }
 
-.textHyperSource{
-    color:fuchsia;
+.textHyperSource {
+    color: fuchsia;
     font-family: 'MistralBold';
     font-size: 120%;
 }
 
-.table{
+.table {
     background: burlywood;
     border: 2px solid aqua;
     position: fixed;
-    top:35%;
-    left:35%;
+    top: 35%;
+    left: 35%;
     color: fuchsia;
 }
-.title { 
+
+.title {
     background: burlywood;
     border: 2px solid aqua;
     font-weight: bold;
     text-align: left
-}  
+}
+
 .data {
     background: burlywood;
     border: 2px solid aqua;
     text-align: center
-} 
-th, td {border: 2px solid aqua;}
+}
 
-    @font-face { font-family: "Mistral";  
-       src: url('../fonts/Mistral.ttf') format('TrueType');
-        font-style: normal; 
-            font-weight: normal; 
-        }
+th, td {
+    border: 2px solid aqua;
+}
 
-    @font-face { font-family: "MistralBold";  
-       src: url('../fonts/Mistral.ttf') format('TrueType');
-        font-style: normal;
-            font-weight: bold; 
-        }
-.text-test{
+@font-face {
+    font-family: "Mistral";
+    src: url('../fonts/Mistral.ttf') format('TrueType');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "MistralBold";
+    src: url('../fonts/Mistral.ttf') format('TrueType');
+    font-style: normal;
+    font-weight: bold;
+}
+
+.text-test {
     position: absolute;
-    margin-left:14%;
-    margin-right:14%;
+    margin-left: 14%;
+    margin-right: 14%;
     margin-bottom: 4%;
     margin-top: 50px;
     text-align: center;
-    color:cyan;
-    z-index: 1;
+    color: cyan;
+    z-index: 0;
     text-shadow: black 4px 2px 2px;
 }
-.Contact{
+
+#comment_form{
+    display: none;
+}
+.add_comments_form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    color: cyan;
+    z-index: 10000;
+
+    text-shadow: black 4px 2px 2px;
+}
+
+.add_comments_form_bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: fuchsia;
+    backdrop-filter: blur(10px);
+    opacity: 30%;
+}
+
+.comment_form {
+    position: absolute;
+    left: 40vw;
+    top: 35vh;
+    width: auto;
+    border: 2px solid cyan;
+    border-radius: 5px;
+}
+
+.Contact {
     margin-left: 25%;
     position: fixed;
 }
-#PhotoBig{
+
+#PhotoBig {
     position: fixed;
     z-index: 10;
     top: 50%;
     height: auto;
     width: auto;
 }
-#BigPhotoImg{
+
+#BigPhotoImg {
     width: auto;
     height: 35vh;
 }
@@ -236,14 +301,14 @@ th, td {border: 2px solid aqua;}
     color: #d32f2f;
 }
 
-.notification{
+.notification {
     position: fixed;
     top: 100px;
     right: 20px;
     z-index: 100;
 }
 
-.notification .notification__item{
+.notification .notification__item {
     margin-top: 10px;
     padding: 10px 20px;
     background-color: fuchsia;
@@ -252,12 +317,12 @@ th, td {border: 2px solid aqua;}
     font-size: 16px;
 }
 
-.notification .notification__item span{
+.notification .notification__item span {
     font-weight: bold;
 }
 
 
-.notification .notification__item_good{
+.notification .notification__item_good {
     background-color: cyan;
     color: #fff;
 }

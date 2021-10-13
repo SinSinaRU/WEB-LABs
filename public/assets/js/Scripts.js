@@ -3,6 +3,7 @@ var FIO_ch = false;
 var com_ch = false;
 var phone_ch = false;
 
+let usedLogin = false;
 
 function showTab() {
     document.getElementById("mydropdown").classList.toggle("show");
@@ -16,6 +17,67 @@ function currentDate() {
     d = t.getDay();
     element.innerText = "Дата: " + now + " " + days[d];
     setTimeout("currentDate()", 1000);
+}
+
+function fetchRequest() {
+    let login = document.getElementById("login").value;
+    fetch("/users/loginCheck?login=" + login, {
+        headers: {"content-type": "application/json"},
+        method: "get"
+    })
+        .then(response => {
+            if (response.ok)
+                return response.json();
+        }).then(data => {
+        if (data.login_used == 1) usedLogin = true; else usedLogin = false;
+        checkLogin(usedLogin);
+    })
+        .catch(data => console.log(data));
+
+}
+
+function checkLogin(isUsed = usedLogin) {
+    if (isUsed)
+        document.getElementById("login_used").style.display = "block";
+    else
+        document.getElementById("login_used").style.display = "none";
+}
+
+function openModalAddComment(isOpen) {
+    if (isOpen)
+        document.getElementById("comment_form").style.display = 'block';
+    else
+        document.getElementById("comment_form").style.display = 'none';
+
+}
+
+function sendComment() {
+    let comment = document.getElementById("text-comment").value;
+    let xmlString = "<note>" + "<comment>" + comment + "</comment>" + "</note>";
+    let url = "/blog/addComment";
+    const xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("POST", url, true);
+    let xmlDoc;
+    xmlHttp.onreadystatechange = function () {
+        if (xmlHttp.readyState === 4)
+            if (xmlHttp.status === 200) {
+                xmlDoc = xmlHttp.responseXML;
+                console.log(xmlDoc);
+            }
+    };
+    xmlHttp.setRequestHeader("Content-Type", "text/xml ");
+    xmlHttp.send(xmlString)
+    let iframe = document.getElementById('iframe');
+    iframe.remove();
+    uploadComments();
+}
+
+function uploadComments() {
+    let homeIframe = document.getElementById('comments');
+    let iframe = document.createElement('iframe');
+    iframe.setAttribute('id','iframe');
+    iframe.src = "/blog/addComment";
+    homeIframe.appendChild(iframe);
 }
 
 /*

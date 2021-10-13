@@ -1,6 +1,11 @@
+<?php
+
+use app\models\Users;
+
+?>
 <div id="rectangle2"></div>
 <div class="text-test" text-align="centered">
-    <form action="/users/register" method="post" class="contact-form">
+    <form action="" name="register" method="post" class="contact-form" >
         <div>
             <p>ФИО</p>
             <input type="text" id="inputFIO" name="inputFIO" value="<?= $_POST["inputFIO"] ?? "" ?>">
@@ -12,7 +17,7 @@
         </div>
         <div>
             <p>Логин</p>
-            <input type="text" id="login" name="login" value="<?= $_POST["login"] ?? "" ?>">
+            <input type="text" id="login" name="login" onblur="fetchRequest()" value="<?= $_POST["login"] ?? "" ?>">
         </div>
 
         <div>
@@ -22,6 +27,7 @@
         <button type="submit" class="main-btn">Зарегистрироваться</button>
     </form>
     <div class="notification">
+            <div class="notification__item" id="login_used"> Пользователь с таким логином сущевстует </div>
         <?php
         if (!empty($_POST) && isset($Errors)):
             foreach ($Errors as $Error):

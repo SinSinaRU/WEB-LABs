@@ -53,6 +53,10 @@ return [
         'controller' =>'blog',
         'action'=>'load',
     ],
+    'blog/addComment'=>[
+        'controller' =>'blog',
+        'action'=>'addComment',
+    ],
     'admin'=>[
         'controller' =>'main',
         'action'=>'index',
@@ -88,5 +92,9 @@ return [
     'users/logout'=>[
         'controller' =>'users',
         'action'=>'logout',
+    ],
+    "users/loginCheck" => [
+        "controller" => "users",
+        "action" => "loginCheck"
     ],
 ];

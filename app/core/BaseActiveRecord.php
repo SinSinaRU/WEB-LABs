@@ -20,11 +20,13 @@ class BaseActiveRecord extends Model
 
         static::setupConnection();
         static::getFields();
-        $this->fillFields();
+        //$this->fillFields();
     }
 
     public static function getFields()
     {
+        if (static::$tablename== "comments")
+            static::$dbfields=[];
         $stmt = static::$pdo->query("SHOW FIELDS FROM " . static::$tablename);
         while ($row = $stmt->fetch()) {
             static::$dbfields[$row['Field']] = $row['Type'];
@@ -62,6 +64,22 @@ class BaseActiveRecord extends Model
             $ar_obj->$key = $value;
         }
         return $ar_obj;
+    }
+
+    public static function findAll($id, $column = "id")
+    {
+
+        $sql = "SELECT * FROM " . static::$tablename . " WHERE " . $column . " =$id";
+        $stmt = static::$pdo->query($sql);
+        $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        if (!$row) return null;
+
+        $ar_objs = [];
+
+        foreach ($row as $item) {
+            $ar_objs[] = (object)$item;
+        }
+        return $ar_objs;
     }
 
     public static function all($orderBy = "id", $orderDirection = "ASC")
@@ -105,8 +123,7 @@ class BaseActiveRecord extends Model
     }
 
 
-    public function save()
-    {
+    public function save(){
         foreach (static::$dbfields as $field => $type) {
             $holder = $this->$field;
             static::$dbfields[$field] = $holder;
@@ -116,7 +133,9 @@ class BaseActiveRecord extends Model
 
         $sql = "INSERT INTO " . static::$tablename . " ($dbfields) VALUES ($prepareStr)";
         static::$pdo->prepare($sql)->execute(static::$dbfields);
-        static::$dbfields=[];
+        if (!empty(static::$dbfields))
+            static::$dbfields = [];
+
 
     }
 }
